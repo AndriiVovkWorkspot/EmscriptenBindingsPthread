@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <script>
+    var Module = {
+      onRuntimeInitialized: function() {
+        var callback = {
+          invoke: function(str) {
+            console.log('invoke() called with "%s" argument', str);
+          }
+        };
+
+        var interfaceObject =
+          Module.Interface.implement(callback);
+
+        Module.callInvokeInWorkerThread(interfaceObject);
+      }
+    };
+  </script>
+  <script src="build/emscripten_bindings_pthread.js"></script>
+</html>
